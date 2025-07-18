@@ -127,13 +127,13 @@ And Then fill some sample datas on all the tables done:- using
 9.Normalize the database by creating a separate table for order items and updating the orders table to reference the order_items table.
 ``` sql
     CREATE TABLE order_items (
-	id int AUTO_INCREMENT PRIMARY KEY,
-    order_id INT ,
-    product_id INT,
-    quantity DECIMAL(20,2),
-    price DECIMAL(10,2),
-    FOREIGN KEY (order_id) REFERENCES orders(id),
-    FOREIGN KEY (product_id) REFERENCES products(id)
+        id int AUTO_INCREMENT PRIMARY KEY,
+        order_id INT ,
+        product_id INT,
+        quantity DECIMAL(20,2),
+        price DECIMAL(10,2),
+        FOREIGN KEY (order_id) REFERENCES orders(id),
+        FOREIGN KEY (product_id) REFERENCES products(id)
     );
 
     -- We create a separate "order_items" table to store each product line in an order.
@@ -146,6 +146,6 @@ And Then fill some sample datas on all the tables done:- using
 10.Retrieve the average total of all orders.
 ``` sql
     SELECT avg(total_amount) FROM orders;
-    
+
     -- avg() used for getting avg total.
 ```
