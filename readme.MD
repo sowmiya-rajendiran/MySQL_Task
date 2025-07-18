@@ -55,6 +55,7 @@ And Then fill some sample datas on all the tables done:- using
     FROM customers AS c
     JOIN orders AS o ON c.id = o.customer_id 
     WHERE o.order_date >= CURDATE() - INTERVAL 30 DAY;
+
     --Retrieve all customer records using a JOIN because we want the date based on the orders table.
     --CURDATE() returns the current date, and subtracting 30 days gives the date 30 days ago.
     --Using the condition >= ensures we get data from the last 30 days.
@@ -65,24 +66,28 @@ And Then fill some sample datas on all the tables done:- using
     SELECT customer_id, SUM(total_amount)
     FROM orders
     GROUP BY customer_id;
+
     -- Get the total amount for each customers using group by.
 ```
 
 - 3.Update the price of Product C to 45.00.
 ``` sql 
     UPDATE products SET price=45.00 WHERE id=3; 
+
     -- this query update the product price using where for particular product update .
 ```
 
 4.Add a new column discount to the products table.
 ``` sql
     ALTER TABLE products ADD column discount DECIMAL(10,2);
+
     -- using alter table for add discount column in products table
 ```
 
 5.Retrieve the top 3 products with the highest price.
 ```sql
     SELECT * FROM products ORDER BY price DESC LIMIT 3 ;
+
     -- I am retrieving the highest-priced products by using ORDER BY in descending order and LIMIT 3 to get only the top 3 products.
 ```
 
@@ -108,12 +113,14 @@ And Then fill some sample datas on all the tables done:- using
     ON customers.id = orders.customer_id;
     --(OR)
     SELECT c.name,o.order_date FROM cutomers AS c JOIN orders AS o ON c.id = o.customer_id;
+
     -- I am retrieving customer name from customer table and order date from orders table using join 
 ```
 
 8.Retrieve the orders with a total amount greater than 150.00.
 ``` sql
     SELECT * FROM orders WHERE total_amount>150;
+
     -- I am retrieving orders with condition of total amount greater than 150.00.
 ```
 
@@ -128,6 +135,7 @@ And Then fill some sample datas on all the tables done:- using
     FOREIGN KEY (order_id) REFERENCES orders(id),
     FOREIGN KEY (product_id) REFERENCES products(id)
     );
+
     -- We create a separate "order_items" table to store each product line in an order.
     -- Each row in "order_items" represents: 
     -- One product in a specific order
@@ -138,5 +146,6 @@ And Then fill some sample datas on all the tables done:- using
 10.Retrieve the average total of all orders.
 ``` sql
     SELECT avg(total_amount) FROM orders;
+    
     -- avg() used for getting avg total.
 ```
